@@ -6,8 +6,7 @@ PASSWORD="root@123"
 
 sudo mysqldump -u${USER} -p${PASSWORD} ${DATABASE}|gzip > ${SQLFILE}.gz
 
-#aws s3 cp ${SQLFILE}.gz s3://mydemobackup
-sudo s3cmd -c /root/.s3cfg put ${SQLFILE}.gz s3://mydemobackup
+sudo s3cmd put ${SQLFILE}.gz s3://mydemobackup
 
-sudo find /home/renuka/mybackup/. -mtime +10 -exec rm {} \;
+sudo find /home/renuka/mybackup/. -mtime +5 -exec rm {} \;
 
